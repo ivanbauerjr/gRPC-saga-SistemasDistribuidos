@@ -17,29 +17,29 @@ class TravelAgencyService(travel_pb2_grpc.TravelAgencyServicer):
 
     def BookTrip(self, request, context):
         try:
-            # 🔹 Etapa 1: Compra da Passagem Aérea
+            # Etapa 1: Compra da Passagem Aérea
             flight_response = self.airline_stub.BookFlight(request)
             if not flight_response.success:
                 return travel_pb2.TripResponse(success=False, message="Falha ao comprar passagem aérea.")
 
-            # 🔹 Etapa 2: Reserva do Hotel
+            # Etapa 2: Reserva do Hotel
             hotel_request = travel_pb2.HotelRequest(destination=request.destination, date=request.date, nights=2, people=request.people)
             hotel_response = self.hotel_stub.BookHotel(hotel_request)
             if not hotel_response.success:
-                # ❌ Falhou → Cancelar passagem aérea
+                # Falhou -> Cancelar passagem aérea
                 self.airline_stub.CancelFlight(request)
                 return travel_pb2.TripResponse(success=False, message="Falha ao reservar hotel. Passagem cancelada.")
 
-            # 🔹 Etapa 3: Reserva do Carro
+            # Etapa 3: Reserva do Carro
             car_request = travel_pb2.CarRequest(destination=request.destination, date=request.date, days=3, people=request.people)
             car_response = self.car_stub.BookCar(car_request)
             if not car_response.success:
-                # ❌ Falhou → Cancelar hotel e passagem aérea
+                # Falhou -> Cancelar hotel e passagem aérea
                 self.hotel_stub.CancelHotel(hotel_request)
                 self.airline_stub.CancelFlight(request)
                 return travel_pb2.TripResponse(success=False, message="Falha ao reservar carro. Hotel e passagem cancelados.")
 
-            # ✅ Todas as etapas bem-sucedidas
+            # Todas as etapas bem-sucedidas
             return travel_pb2.TripResponse(
                 success=True,
                 flight_status=flight_response.status,

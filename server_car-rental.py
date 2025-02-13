@@ -1,13 +1,30 @@
+import random
+import grpc
+from concurrent import futures
+import travel_pb2
+import travel_pb2_grpc
+
+import random
 import grpc
 from concurrent import futures
 import travel_pb2
 import travel_pb2_grpc
 
 class CarRentalService(travel_pb2_grpc.CarRentalServicer):
+    def __init__(self):
+        # Defina uma variável de controle para alternar entre aleatório e hardcoded
+        self.use_hardcoded_response = False  # Altere para True para usar a resposta hardcoded
+
     def BookCar(self, request, context):
-        if random.choice([True, False]):
-            return travel_pb2.CarResponse(success=True, status="Carro alugado!")
-        return travel_pb2.CarResponse(success=False, status="Carro não disponível.")
+        if self.use_hardcoded_response:
+            # Resposta hardcoded
+            return travel_pb2.CarResponse(success=True, status="Carro alugado com sucesso!")  # Hardcoded
+            #return travel_pb2.CarResponse(success=False, status="Carro não disponível.") # Hardcoded
+        else:
+            # Resposta aleatória
+            if random.choice([True, False]):
+                return travel_pb2.CarResponse(success=True, status="Carro alugado!")
+            return travel_pb2.CarResponse(success=False, status="Carro não disponível.")
 
     def CancelCar(self, request, context):
         return travel_pb2.CancelResponse(success=True, message="Reserva de carro cancelada.")

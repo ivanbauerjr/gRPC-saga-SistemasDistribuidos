@@ -25,6 +25,351 @@ if _version_not_supported:
     )
 
 
+class AirlineStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.BookFlight = channel.unary_unary(
+                '/travel.Airline/BookFlight',
+                request_serializer=travel__pb2.FlightRequest.SerializeToString,
+                response_deserializer=travel__pb2.FlightResponse.FromString,
+                _registered_method=True)
+        self.CancelFlight = channel.unary_unary(
+                '/travel.Airline/CancelFlight',
+                request_serializer=travel__pb2.FlightRequest.SerializeToString,
+                response_deserializer=travel__pb2.CancelResponse.FromString,
+                _registered_method=True)
+
+
+class AirlineServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def BookFlight(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CancelFlight(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_AirlineServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'BookFlight': grpc.unary_unary_rpc_method_handler(
+                    servicer.BookFlight,
+                    request_deserializer=travel__pb2.FlightRequest.FromString,
+                    response_serializer=travel__pb2.FlightResponse.SerializeToString,
+            ),
+            'CancelFlight': grpc.unary_unary_rpc_method_handler(
+                    servicer.CancelFlight,
+                    request_deserializer=travel__pb2.FlightRequest.FromString,
+                    response_serializer=travel__pb2.CancelResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'travel.Airline', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('travel.Airline', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class Airline(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def BookFlight(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/travel.Airline/BookFlight',
+            travel__pb2.FlightRequest.SerializeToString,
+            travel__pb2.FlightResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CancelFlight(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/travel.Airline/CancelFlight',
+            travel__pb2.FlightRequest.SerializeToString,
+            travel__pb2.CancelResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class HotelStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.BookHotel = channel.unary_unary(
+                '/travel.Hotel/BookHotel',
+                request_serializer=travel__pb2.HotelRequest.SerializeToString,
+                response_deserializer=travel__pb2.HotelResponse.FromString,
+                _registered_method=True)
+        self.CancelHotel = channel.unary_unary(
+                '/travel.Hotel/CancelHotel',
+                request_serializer=travel__pb2.HotelRequest.SerializeToString,
+                response_deserializer=travel__pb2.CancelResponse.FromString,
+                _registered_method=True)
+
+
+class HotelServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def BookHotel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CancelHotel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_HotelServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'BookHotel': grpc.unary_unary_rpc_method_handler(
+                    servicer.BookHotel,
+                    request_deserializer=travel__pb2.HotelRequest.FromString,
+                    response_serializer=travel__pb2.HotelResponse.SerializeToString,
+            ),
+            'CancelHotel': grpc.unary_unary_rpc_method_handler(
+                    servicer.CancelHotel,
+                    request_deserializer=travel__pb2.HotelRequest.FromString,
+                    response_serializer=travel__pb2.CancelResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'travel.Hotel', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('travel.Hotel', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class Hotel(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def BookHotel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/travel.Hotel/BookHotel',
+            travel__pb2.HotelRequest.SerializeToString,
+            travel__pb2.HotelResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CancelHotel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/travel.Hotel/CancelHotel',
+            travel__pb2.HotelRequest.SerializeToString,
+            travel__pb2.CancelResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class CarRentalStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.BookCar = channel.unary_unary(
+                '/travel.CarRental/BookCar',
+                request_serializer=travel__pb2.CarRequest.SerializeToString,
+                response_deserializer=travel__pb2.CarResponse.FromString,
+                _registered_method=True)
+        self.CancelCar = channel.unary_unary(
+                '/travel.CarRental/CancelCar',
+                request_serializer=travel__pb2.CarRequest.SerializeToString,
+                response_deserializer=travel__pb2.CancelResponse.FromString,
+                _registered_method=True)
+
+
+class CarRentalServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def BookCar(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CancelCar(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_CarRentalServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'BookCar': grpc.unary_unary_rpc_method_handler(
+                    servicer.BookCar,
+                    request_deserializer=travel__pb2.CarRequest.FromString,
+                    response_serializer=travel__pb2.CarResponse.SerializeToString,
+            ),
+            'CancelCar': grpc.unary_unary_rpc_method_handler(
+                    servicer.CancelCar,
+                    request_deserializer=travel__pb2.CarRequest.FromString,
+                    response_serializer=travel__pb2.CancelResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'travel.CarRental', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('travel.CarRental', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class CarRental(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def BookCar(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/travel.CarRental/BookCar',
+            travel__pb2.CarRequest.SerializeToString,
+            travel__pb2.CarResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CancelCar(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/travel.CarRental/CancelCar',
+            travel__pb2.CarRequest.SerializeToString,
+            travel__pb2.CancelResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
 class TravelAgencyStub(object):
     """Missing associated documentation comment in .proto file."""
 
@@ -86,222 +431,6 @@ class TravelAgency(object):
             '/travel.TravelAgency/BookTrip',
             travel__pb2.TripRequest.SerializeToString,
             travel__pb2.TripResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-
-class AirlineStub(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.BookFlight = channel.unary_unary(
-                '/travel.Airline/BookFlight',
-                request_serializer=travel__pb2.FlightRequest.SerializeToString,
-                response_deserializer=travel__pb2.FlightResponse.FromString,
-                _registered_method=True)
-
-
-class AirlineServicer(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def BookFlight(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_AirlineServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'BookFlight': grpc.unary_unary_rpc_method_handler(
-                    servicer.BookFlight,
-                    request_deserializer=travel__pb2.FlightRequest.FromString,
-                    response_serializer=travel__pb2.FlightResponse.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'travel.Airline', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('travel.Airline', rpc_method_handlers)
-
-
- # This class is part of an EXPERIMENTAL API.
-class Airline(object):
-    """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def BookFlight(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/travel.Airline/BookFlight',
-            travel__pb2.FlightRequest.SerializeToString,
-            travel__pb2.FlightResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-
-class HotelStub(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.BookHotel = channel.unary_unary(
-                '/travel.Hotel/BookHotel',
-                request_serializer=travel__pb2.HotelRequest.SerializeToString,
-                response_deserializer=travel__pb2.HotelResponse.FromString,
-                _registered_method=True)
-
-
-class HotelServicer(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def BookHotel(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_HotelServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'BookHotel': grpc.unary_unary_rpc_method_handler(
-                    servicer.BookHotel,
-                    request_deserializer=travel__pb2.HotelRequest.FromString,
-                    response_serializer=travel__pb2.HotelResponse.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'travel.Hotel', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('travel.Hotel', rpc_method_handlers)
-
-
- # This class is part of an EXPERIMENTAL API.
-class Hotel(object):
-    """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def BookHotel(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/travel.Hotel/BookHotel',
-            travel__pb2.HotelRequest.SerializeToString,
-            travel__pb2.HotelResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-
-class CarRentalStub(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.BookCar = channel.unary_unary(
-                '/travel.CarRental/BookCar',
-                request_serializer=travel__pb2.CarRequest.SerializeToString,
-                response_deserializer=travel__pb2.CarResponse.FromString,
-                _registered_method=True)
-
-
-class CarRentalServicer(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def BookCar(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_CarRentalServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'BookCar': grpc.unary_unary_rpc_method_handler(
-                    servicer.BookCar,
-                    request_deserializer=travel__pb2.CarRequest.FromString,
-                    response_serializer=travel__pb2.CarResponse.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'travel.CarRental', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('travel.CarRental', rpc_method_handlers)
-
-
- # This class is part of an EXPERIMENTAL API.
-class CarRental(object):
-    """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def BookCar(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/travel.CarRental/BookCar',
-            travel__pb2.CarRequest.SerializeToString,
-            travel__pb2.CarResponse.FromString,
             options,
             channel_credentials,
             insecure,

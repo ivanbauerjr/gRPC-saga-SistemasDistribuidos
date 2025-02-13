@@ -2,69 +2,79 @@ syntax = "proto3";
 
 package travel;
 
-service TravelAgency {
-    rpc BookTrip(TripRequest) returns (TripResponse);
-}
-
 service Airline {
-    rpc BookFlight(FlightRequest) returns (FlightResponse);
+  rpc BookFlight (FlightRequest) returns (FlightResponse);
+  rpc CancelFlight (FlightRequest) returns (CancelResponse);
 }
 
 service Hotel {
-    rpc BookHotel(HotelRequest) returns (HotelResponse);
+  rpc BookHotel (HotelRequest) returns (HotelResponse);
+  rpc CancelHotel (HotelRequest) returns (CancelResponse);
 }
 
 service CarRental {
-    rpc BookCar(CarRequest) returns (CarResponse);
+  rpc BookCar (CarRequest) returns (CarResponse);
+  rpc CancelCar (CarRequest) returns (CancelResponse);
 }
 
-message TripRequest {
-    string type = 1;  // "one-way" ou "round-trip"
-    string date = 2;
-    string return_date = 3;
-    string origin = 4;
-    string destination = 5;
-    int32 people = 6;
-}
-
-message TripResponse {
-    string flight_status = 1;
-    string hotel_status = 2;
-    string car_status = 3;
-    bool success = 4;
+service TravelAgency {
+  rpc BookTrip (TripRequest) returns (TripResponse);
 }
 
 message FlightRequest {
-    string type = 1;
-    string date = 2;
-    string return_date = 3;
-    string origin = 4;
-    string destination = 5;
-    int32 people = 6;
+  string type = 1; // Tipo de voo (round-trip ou one-way)
+  string date = 2; // Data do voo
+  string origin = 3; // Origem
+  string destination = 4; // Destino
 }
 
 message FlightResponse {
-    string status = 1;
+  bool success = 1; // Sucesso ou falha na compra
+  string status = 2; // Status do voo
 }
 
 message HotelRequest {
-    string destination = 1;
-    string date = 2;
-    int32 nights = 3;
-    int32 people = 4;
+  string destination = 1; // Destino do hotel
+  string date = 2; // Data da reserva
+  int32 nights = 3; // Número de noites
+  int32 people = 4; // Número de pessoas
 }
 
 message HotelResponse {
-    string status = 1;
+  bool success = 1; // Sucesso ou falha na reserva
+  string status = 2; // Status do hotel
 }
 
 message CarRequest {
-    string destination = 1;
-    string date = 2;
-    int32 days = 3;
-    int32 people = 4;
+  string destination = 1; // Destino do carro
+  string date = 2; // Data do aluguel
+  int32 days = 3; // Número de dias
+  int32 people = 4; // Número de pessoas
 }
 
 message CarResponse {
-    string status = 1;
+  bool success = 1; // Sucesso ou falha no aluguel
+  string status = 2; // Status do aluguel
+}
+
+message CancelResponse {
+  bool success = 1; // Sucesso ou falha ao cancelar
+  string message = 2; // Mensagem de cancelamento
+}
+
+message TripRequest {
+  string type = 1; // "round-trip" ou "one-way"
+  string date = 2; // Data da viagem
+  string return_date = 3; // Data de retorno
+  string origin = 4; // Origem
+  string destination = 5; // Destino
+  int32 people = 6; // Número de pessoas
+}
+
+message TripResponse {
+  bool success = 1; // Sucesso ou falha
+  string flight_status = 2; // Status do voo
+  string hotel_status = 3; // Status do hotel
+  string car_status = 4; // Status do carro
+  string message = 5; // Mensagem adicional
 }

@@ -10,13 +10,14 @@ def run():
             travel_pb2.TripRequest(
                 type="round-trip",
                 date="2025-06-10",
-                return_date="2025-06-20",
                 origin="Curitiba",
                 destination="Rio de Janeiro",
                 people=2
             )
         )
         print(f"Resultado da Reserva: {response.flight_status}, {response.hotel_status}, {response.car_status}")
+        print(f"Mensagem: {response.message}")
 
 if __name__ == "__main__":
     run()
+

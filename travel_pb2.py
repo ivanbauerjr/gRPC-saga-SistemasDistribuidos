@@ -24,35 +24,37 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0ctravel.proto\x12\x06travel\"s\n\x0bTripRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\x12\x13\n\x0breturn_date\x18\x03 \x01(\t\x12\x0e\n\x06origin\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65stination\x18\x05 \x01(\t\x12\x0e\n\x06people\x18\x06 \x01(\x05\"`\n\x0cTripResponse\x12\x15\n\rflight_status\x18\x01 \x01(\t\x12\x14\n\x0chotel_status\x18\x02 \x01(\t\x12\x12\n\ncar_status\x18\x03 \x01(\t\x12\x0f\n\x07success\x18\x04 \x01(\x08\"u\n\rFlightRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\x12\x13\n\x0breturn_date\x18\x03 \x01(\t\x12\x0e\n\x06origin\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65stination\x18\x05 \x01(\t\x12\x0e\n\x06people\x18\x06 \x01(\x05\" \n\x0e\x46lightResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\"Q\n\x0cHotelRequest\x12\x13\n\x0b\x64\x65stination\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\x12\x0e\n\x06nights\x18\x03 \x01(\x05\x12\x0e\n\x06people\x18\x04 \x01(\x05\"\x1f\n\rHotelResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\"M\n\nCarRequest\x12\x13\n\x0b\x64\x65stination\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ys\x18\x03 \x01(\x05\x12\x0e\n\x06people\x18\x04 \x01(\x05\"\x1d\n\x0b\x43\x61rResponse\x12\x0e\n\x06status\x18\x01 \x01(\t2E\n\x0cTravelAgency\x12\x35\n\x08\x42ookTrip\x12\x13.travel.TripRequest\x1a\x14.travel.TripResponse2F\n\x07\x41irline\x12;\n\nBookFlight\x12\x15.travel.FlightRequest\x1a\x16.travel.FlightResponse2A\n\x05Hotel\x12\x38\n\tBookHotel\x12\x14.travel.HotelRequest\x1a\x15.travel.HotelResponse2?\n\tCarRental\x12\x32\n\x07\x42ookCar\x12\x12.travel.CarRequest\x1a\x13.travel.CarResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0ctravel.proto\x12\x06travel\"P\n\rFlightRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\x12\x0e\n\x06origin\x18\x03 \x01(\t\x12\x13\n\x0b\x64\x65stination\x18\x04 \x01(\t\"1\n\x0e\x46lightResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0e\n\x06status\x18\x02 \x01(\t\"Q\n\x0cHotelRequest\x12\x13\n\x0b\x64\x65stination\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\x12\x0e\n\x06nights\x18\x03 \x01(\x05\x12\x0e\n\x06people\x18\x04 \x01(\x05\"0\n\rHotelResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0e\n\x06status\x18\x02 \x01(\t\"M\n\nCarRequest\x12\x13\n\x0b\x64\x65stination\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ys\x18\x03 \x01(\x05\x12\x0e\n\x06people\x18\x04 \x01(\x05\".\n\x0b\x43\x61rResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0e\n\x06status\x18\x02 \x01(\t\"2\n\x0e\x43\x61ncelResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"s\n\x0bTripRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\x12\x13\n\x0breturn_date\x18\x03 \x01(\t\x12\x0e\n\x06origin\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65stination\x18\x05 \x01(\t\x12\x0e\n\x06people\x18\x06 \x01(\x05\"q\n\x0cTripResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x15\n\rflight_status\x18\x02 \x01(\t\x12\x14\n\x0chotel_status\x18\x03 \x01(\t\x12\x12\n\ncar_status\x18\x04 \x01(\t\x12\x0f\n\x07message\x18\x05 \x01(\t2\x85\x01\n\x07\x41irline\x12;\n\nBookFlight\x12\x15.travel.FlightRequest\x1a\x16.travel.FlightResponse\x12=\n\x0c\x43\x61ncelFlight\x12\x15.travel.FlightRequest\x1a\x16.travel.CancelResponse2~\n\x05Hotel\x12\x38\n\tBookHotel\x12\x14.travel.HotelRequest\x1a\x15.travel.HotelResponse\x12;\n\x0b\x43\x61ncelHotel\x12\x14.travel.HotelRequest\x1a\x16.travel.CancelResponse2x\n\tCarRental\x12\x32\n\x07\x42ookCar\x12\x12.travel.CarRequest\x1a\x13.travel.CarResponse\x12\x37\n\tCancelCar\x12\x12.travel.CarRequest\x1a\x16.travel.CancelResponse2E\n\x0cTravelAgency\x12\x35\n\x08\x42ookTrip\x12\x13.travel.TripRequest\x1a\x14.travel.TripResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'travel_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_TRIPREQUEST']._serialized_start=24
-  _globals['_TRIPREQUEST']._serialized_end=139
-  _globals['_TRIPRESPONSE']._serialized_start=141
-  _globals['_TRIPRESPONSE']._serialized_end=237
-  _globals['_FLIGHTREQUEST']._serialized_start=239
-  _globals['_FLIGHTREQUEST']._serialized_end=356
-  _globals['_FLIGHTRESPONSE']._serialized_start=358
-  _globals['_FLIGHTRESPONSE']._serialized_end=390
-  _globals['_HOTELREQUEST']._serialized_start=392
-  _globals['_HOTELREQUEST']._serialized_end=473
-  _globals['_HOTELRESPONSE']._serialized_start=475
-  _globals['_HOTELRESPONSE']._serialized_end=506
-  _globals['_CARREQUEST']._serialized_start=508
-  _globals['_CARREQUEST']._serialized_end=585
-  _globals['_CARRESPONSE']._serialized_start=587
-  _globals['_CARRESPONSE']._serialized_end=616
-  _globals['_TRAVELAGENCY']._serialized_start=618
-  _globals['_TRAVELAGENCY']._serialized_end=687
-  _globals['_AIRLINE']._serialized_start=689
-  _globals['_AIRLINE']._serialized_end=759
-  _globals['_HOTEL']._serialized_start=761
-  _globals['_HOTEL']._serialized_end=826
-  _globals['_CARRENTAL']._serialized_start=828
-  _globals['_CARRENTAL']._serialized_end=891
+  _globals['_FLIGHTREQUEST']._serialized_start=24
+  _globals['_FLIGHTREQUEST']._serialized_end=104
+  _globals['_FLIGHTRESPONSE']._serialized_start=106
+  _globals['_FLIGHTRESPONSE']._serialized_end=155
+  _globals['_HOTELREQUEST']._serialized_start=157
+  _globals['_HOTELREQUEST']._serialized_end=238
+  _globals['_HOTELRESPONSE']._serialized_start=240
+  _globals['_HOTELRESPONSE']._serialized_end=288
+  _globals['_CARREQUEST']._serialized_start=290
+  _globals['_CARREQUEST']._serialized_end=367
+  _globals['_CARRESPONSE']._serialized_start=369
+  _globals['_CARRESPONSE']._serialized_end=415
+  _globals['_CANCELRESPONSE']._serialized_start=417
+  _globals['_CANCELRESPONSE']._serialized_end=467
+  _globals['_TRIPREQUEST']._serialized_start=469
+  _globals['_TRIPREQUEST']._serialized_end=584
+  _globals['_TRIPRESPONSE']._serialized_start=586
+  _globals['_TRIPRESPONSE']._serialized_end=699
+  _globals['_AIRLINE']._serialized_start=702
+  _globals['_AIRLINE']._serialized_end=835
+  _globals['_HOTEL']._serialized_start=837
+  _globals['_HOTEL']._serialized_end=963
+  _globals['_CARRENTAL']._serialized_start=965
+  _globals['_CARRENTAL']._serialized_end=1085
+  _globals['_TRAVELAGENCY']._serialized_start=1087
+  _globals['_TRAVELAGENCY']._serialized_end=1156
 # @@protoc_insertion_point(module_scope)
