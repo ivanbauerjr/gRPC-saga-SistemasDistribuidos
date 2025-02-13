@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package travel;
+
+service TravelAgency {
+    rpc BookTrip(TripRequest) returns (TripResponse);
+}
+
+service Airline {
+    rpc BookFlight(FlightRequest) returns (FlightResponse);
+}
+
+service Hotel {
+    rpc BookHotel(HotelRequest) returns (HotelResponse);
+}
+
+service CarRental {
+    rpc BookCar(CarRequest) returns (CarResponse);
+}
+
+message TripRequest {
+    string type = 1;  // "one-way" ou "round-trip"
+    string date = 2;
+    string return_date = 3;
+    string origin = 4;
+    string destination = 5;
+    int32 people = 6;
+}
+
+message TripResponse {
+    string flight_status = 1;
+    string hotel_status = 2;
+    string car_status = 3;
+    bool success = 4;
+}
+
+message FlightRequest {
+    string type = 1;
+    string date = 2;
+    string return_date = 3;
+    string origin = 4;
+    string destination = 5;
+    int32 people = 6;
+}
+
+message FlightResponse {
+    string status = 1;
+}
+
+message HotelRequest {
+    string destination = 1;
+    string date = 2;
+    int32 nights = 3;
+    int32 people = 4;
+}
+
+message HotelResponse {
+    string status = 1;
+}
+
+message CarRequest {
+    string destination = 1;
+    string date = 2;
+    int32 days = 3;
+    int32 people = 4;
+}
+
+message CarResponse {
+    string status = 1;
+}
