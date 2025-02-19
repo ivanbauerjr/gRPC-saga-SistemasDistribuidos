@@ -54,3 +54,12 @@ people_entry.grid(row=4, column=1)
 tk.Button(root, text="Reservar", command=book_trip).grid(row=5, column=0, columnspan=2)
 
 root.mainloop()
+
+'''
+ex:
+                type="round-trip",
+                date="2025-06-10",
+                origin="Curitiba",
+                destination="Rio de Janeiro",
+                people=2
+'''

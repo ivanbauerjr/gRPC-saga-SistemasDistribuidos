@@ -85,12 +85,3 @@ def serve():
 
 if __name__ == '__main__':
     serve()
-
-'''
-ex:
-                type="round-trip",
-                date="2025-06-10",
-                origin="Curitiba",
-                destination="Rio de Janeiro",
-                people=2
-'''
