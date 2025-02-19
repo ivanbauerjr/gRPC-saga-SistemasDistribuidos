@@ -23,7 +23,7 @@ class TravelAgencyService(travel_pb2_grpc.TravelAgencyServicer):
                 return travel_pb2.TripResponse(success=False, message="Falha ao comprar passagem aérea.")
 
             # Etapa 2: Reserva do Hotel
-            hotel_request = travel_pb2.HotelRequest(destination=request.destination, date=request.date, nights=2, people=request.people)
+            hotel_request = travel_pb2.HotelRequest(destination=request.destination, date=request.date, nights=2)
             hotel_response = self.hotel_stub.BookHotel(hotel_request)
             if not hotel_response.success:
                 # Falhou -> Cancelar passagem aérea
@@ -31,7 +31,7 @@ class TravelAgencyService(travel_pb2_grpc.TravelAgencyServicer):
                 return travel_pb2.TripResponse(success=False, message="Falha ao reservar hotel. Passagem cancelada.")
 
             # Etapa 3: Reserva do Carro
-            car_request = travel_pb2.CarRequest(destination=request.destination, date=request.date, days=3, people=request.people)
+            car_request = travel_pb2.CarRequest(destination=request.destination, date=request.date, days=3)
             car_response = self.car_stub.BookCar(car_request)
             if not car_response.success:
                 # Falhou -> Cancelar hotel e passagem aérea

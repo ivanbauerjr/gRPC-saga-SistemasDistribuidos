@@ -4,30 +4,40 @@ import travel_pb2
 import travel_pb2_grpc
 import random  # Para simular respostas variadas
 
-import random
-import grpc
-from concurrent import futures
-import travel_pb2
-import travel_pb2_grpc
-
 class AirlineService(travel_pb2_grpc.AirlineServicer):
     def __init__(self):
-        # Defina uma variável de controle para alternar entre aleatório e hardcoded
-        self.use_hardcoded_response = True  # Altere para True para usar a resposta hardcoded
+        # Define uma variável para alternar entre aleatório e hardcoded
+        self.use_hardcoded_response = True  # Altere para False para usar resposta aleatória
+        
+        # Dicionário para armazenar reservas de voos
+        self.reservas = {}  # Formato: {request_id: status}
 
+    #Tenta reservar um voo e armazena no dicionário para possível compensação.
     def BookFlight(self, request, context):
+        request_id = f"{request.origin}-{request.destination}-{request.date}-{request.type}"
+        
         if self.use_hardcoded_response:
-            # Resposta hardcoded
-            return travel_pb2.FlightResponse(success=True, status="Passagem comprada com sucesso!")  # Hardcoded
-            #return travel_pb2.FlightResponse(success=False, status="Voo indisponível.") # Hardcoded
+            success = True
+            status = "Passagem comprada com sucesso!"  
         else:
-            # Resposta aleatória
-            if random.choice([True, False]):
-                return travel_pb2.FlightResponse(success=True, status="Passagem comprada!")
-            return travel_pb2.FlightResponse(success=False, status="Voo indisponível.")
+            success = random.choice([True, False])
+            status = "Passagem comprada!" if success else "Voo indisponível."
 
+        # Registra a reserva apenas se for bem-sucedida
+        if success:
+            self.reservas[request_id] = status
+
+        return travel_pb2.FlightResponse(success=success, status=status)
+
+    #Compensa (cancela) uma reserva de voo previamente feita.
     def CancelFlight(self, request, context):
-        return travel_pb2.CancelResponse(success=True, message="Passagem cancelada.")
+        request_id = f"{request.origin}-{request.destination}-{request.date}"
+        
+        if request_id in self.reservas:
+            del self.reservas[request_id]  # Remove a reserva
+            return travel_pb2.CancelResponse(success=True, message="Passagem cancelada com sucesso.")
+        else:
+            return travel_pb2.CancelResponse(success=False, message="Nenhuma passagem encontrada para cancelamento.")
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
