@@ -7,7 +7,7 @@ import random  # Para simular respostas variadas
 class CarRentalService(travel_pb2_grpc.CarRentalServicer):
     def __init__(self):
         # Define uma variável para alternar entre aleatório e hardcoded
-        self.use_hardcoded_response = False  # Altere para True para usar resposta fixa
+        self.use_hardcoded_response = True  # Altere para True para usar resposta fixa
         
         # Dicionário para armazenar reservas de carros
         self.reservas = {}  # Formato: {request_id: status}
@@ -18,7 +18,7 @@ class CarRentalService(travel_pb2_grpc.CarRentalServicer):
         
         if self.use_hardcoded_response:
             success = True
-            status = "Carro alugado com sucesso!"  
+            status = "Carro alugado!" if success else "Carro não disponível."
         else:
             success = random.choice([True, False])
             status = "Carro alugado!" if success else "Carro não disponível."

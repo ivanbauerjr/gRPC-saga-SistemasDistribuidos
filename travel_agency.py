@@ -29,7 +29,7 @@ class TravelAgencyService(travel_pb2_grpc.TravelAgencyServicer):
                 )
 
             # Etapa 2: Reserva do Hotel
-            hotel_request = travel_pb2.HotelRequest(destination=request.destination, date=request.date, nights=2)
+            hotel_request = travel_pb2.HotelRequest(destination=request.destination, date=request.date)
             hotel_response = self.hotel_stub.BookHotel(hotel_request)
             if not hotel_response.success:
                 # Falhou -> Cancelar passagem aérea
@@ -43,21 +43,17 @@ class TravelAgencyService(travel_pb2_grpc.TravelAgencyServicer):
                 )
 
             # Etapa 3: Reserva do Carro
-            car_request = travel_pb2.CarRequest(destination=request.destination, date=request.date, days=3)
+            car_request = travel_pb2.CarRequest(destination=request.destination, date=request.date)
             car_response = self.car_stub.BookCar(car_request)
             if not car_response.success:
-                # Salvar status antes de cancelar
-                flight_status_before_cancel = flight_response.status
-                hotel_status_before_cancel = hotel_response.status
-
                 # Cancelamento
                 self.hotel_stub.CancelHotel(hotel_request)
                 self.airline_stub.CancelFlight(request)
 
                 return travel_pb2.TripResponse(
                     success=False,
-                    flight_status=f"Cancelado (era: {flight_status_before_cancel})",
-                    hotel_status=f"Cancelado (era: {hotel_status_before_cancel})",
+                    flight_status=f"Cancelado (era: " + flight_response.status + ")",
+                    hotel_status=f"Cancelado (era: " + hotel_response.status + ")",
                     car_status="Falha",
                     message="Falha ao reservar carro. Hotel e passagem cancelados."
                 )

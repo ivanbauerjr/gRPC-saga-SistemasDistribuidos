@@ -14,11 +14,12 @@ class AirlineService(travel_pb2_grpc.AirlineServicer):
 
     #Tenta reservar um voo e armazena no dicionário para possível compensação.
     def BookFlight(self, request, context):
-        request_id = f"{request.origin}-{request.destination}-{request.date}-{request.type}"
+        request_id = f"{request.origin}-{request.destination}-{request.date}"
         
         if self.use_hardcoded_response:
             success = True
-            status = "Passagem comprada com sucesso!"  
+            status = "Passagem comprada!" if success else "Voo indisponível."
+
         else:
             success = random.choice([True, False])
             status = "Passagem comprada!" if success else "Voo indisponível."

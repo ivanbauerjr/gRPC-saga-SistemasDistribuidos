@@ -18,7 +18,7 @@ class HotelService(travel_pb2_grpc.HotelServicer):
 
         if self.use_hardcoded_response:
             success = True
-            status = "Hotel reservado com sucesso!"
+            status = "Hotel reservado!" if success else "Hotel sem disponibilidade."
         else:
             success = random.choice([True, False])
             status = "Hotel reservado!" if success else "Hotel sem disponibilidade."

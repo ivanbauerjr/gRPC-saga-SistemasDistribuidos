@@ -32,26 +32,30 @@ root = tk.Tk()
 root.title("Reserva de Viagem")
 
 tk.Label(root, text="Tipo de Viagem:").grid(row=0, column=0)
-trip_type_var = tk.StringVar(value="round-trip")
+trip_type_var = tk.StringVar(value="ida-e-volta")
 tk.Entry(root, textvariable=trip_type_var).grid(row=0, column=1)
 
-tk.Label(root, text="Data:").grid(row=1, column=0)
+tk.Label(root, text="Data de ida:").grid(row=1, column=0)
 date_entry = tk.Entry(root)
 date_entry.grid(row=1, column=1)
 
-tk.Label(root, text="Origem:").grid(row=2, column=0)
+tk.Label(root, text="Data de volta:").grid(row=2, column=0)
+return_date_entry = tk.Entry(root)
+return_date_entry.grid(row=2, column=1)
+
+tk.Label(root, text="Origem:").grid(row=3, column=0)
 origin_entry = tk.Entry(root)
-origin_entry.grid(row=2, column=1)
+origin_entry.grid(row=3, column=1)
 
-tk.Label(root, text="Destino:").grid(row=3, column=0)
+tk.Label(root, text="Destino:").grid(row=4, column=0)
 destination_entry = tk.Entry(root)
-destination_entry.grid(row=3, column=1)
+destination_entry.grid(row=4, column=1)
 
-tk.Label(root, text="Pessoas:").grid(row=4, column=0)
+tk.Label(root, text="Pessoas:").grid(row=5, column=0)
 people_entry = tk.Entry(root)
-people_entry.grid(row=4, column=1)
+people_entry.grid(row=5, column=1)
 
-tk.Button(root, text="Reservar", command=book_trip).grid(row=5, column=0, columnspan=2)
+tk.Button(root, text="Reservar", command=book_trip).grid(row=6, column=0, columnspan=2)
 
 root.mainloop()
 
